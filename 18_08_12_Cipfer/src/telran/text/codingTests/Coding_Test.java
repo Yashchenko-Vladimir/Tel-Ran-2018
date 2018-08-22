@@ -18,17 +18,24 @@ class Coding_Test {
 
 	@Test
 	void test() {
-		Cipher cipher = new Cipher(getText());
-		String textCoding = cipher.getCipher("Hello, people!!!");
-		assertTrue(cipher.getPlainText(textCoding).equals("Hello, people!!!"));
-		assertFalse(cipher.getPlainText(textCoding).equals("Hello!!!"));
-		
-		
-		Cipher cipher1 = new Cipher(getText());
-		String textMessage = getText();
-		String textCoding1 = cipher1.getCipher(textMessage);
-		assertTrue(cipher1.getPlainText(textCoding1).equals(textMessage));
-		assertFalse(cipher1.getPlainText(textCoding1).equals("Hello!!!"));
+//		Cipher cipher = new Cipher(getText());
+//		String textCoding = cipher.getCipher("Hello, people!!!");
+//		assertTrue(cipher.getPlainText(textCoding).equals("Hello, people!!!"));
+//		assertFalse(cipher.getPlainText(textCoding).equals("Hello!!!"));
+//		
+//		
+//		Cipher cipher1 = new Cipher(getText());
+//		String textMessage = getText();
+//		String textCoding1 = cipher1.getCipher(textMessage);
+//		assertTrue(cipher1.getPlainText(textCoding1).equals(textMessage));
+//		assertFalse(cipher1.getPlainText(textCoding1).equals("Hello!!!"));
+//		
+		Cipher cipher2 = new Cipher("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/");
+		String textCoding2 = cipher2.getCipher(".,/ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789");
+		System.out.println(textCoding2);
+		System.out.println(cipher2.getPlainText(textCoding2));
+		assertTrue(cipher2.getPlainText(textCoding2).equals(".,/ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"));
+		assertFalse(cipher2.getPlainText(textCoding2).equals("Hello!!!"));
 		
 		
 	}

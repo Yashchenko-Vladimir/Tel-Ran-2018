@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
@@ -14,26 +16,27 @@ public  NodeList<E> head;
  NodeList<E> tail;
  int size;
  
- 
-  public boolean getNode() {
-	  NodeList<E> previous;
-	  NodeList<E> findLoop = new NodeList<>(head.object);
+  public boolean hasLoop() {
+	  boolean res = false;
+	  HashMap<NodeList<E>, Boolean>  has = new HashMap<>(); 
 	  NodeList<E> current = head;
 	  while (true) {
-		  if(findLoop.equals(current)&& current != head) {
-			  return true;
-		  }
-		  previous = current;
-		  
-		  if(current.next == null)
+		  if (current == null)
 			  break;
-		 
+		  if (!has.containsKey(current)) {
+			  has.put(current, true);
+		  } else {
+			  res = true;
+			  break;
+		  }
 		  current = current.next;
-		  previous.next = findLoop;
-		  
-	}
-	  return false;
+	  }
+	  return res;
   }
+ 
+  public void getNode() {
+	   head.next.next.next.next.next.next = head.next.next;
+	  }
  
 	@Override
 	public int size() {
