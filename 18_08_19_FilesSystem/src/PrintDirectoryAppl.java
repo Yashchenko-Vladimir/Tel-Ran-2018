@@ -23,21 +23,16 @@ public class PrintDirectoryAppl {
 			System.out.println(args[0]);
 			return;
 		}
-		
-		printDirRecursione(args);
-		
-	}
+			printDirRecursione(args);
+		} 
 
 
 	private static void printDirRecursione(String[] args) {
 		int level = 1;
 		File dir = new File (args[0]);
-		System.out.println(dir.getAbsoluteFile());
 		System.out.println(dir.getName());
 		searchDirectory(dir, level);
-		
 	}
-
 
 	private static void searchDirectory(File dir, int level) {
 		
@@ -50,7 +45,6 @@ public class PrintDirectoryAppl {
 				searchDirectory(item, level + 1);
 			}
 		}
-		
 	}
 
 
