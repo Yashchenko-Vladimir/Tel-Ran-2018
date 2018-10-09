@@ -35,6 +35,10 @@ public class PersonsRandomTestAppl {
 
 	private static final int N_STREETS = 0;
 
+	private static final int N_CITIES = 0;
+
+	private static final int N_NAMES = 0;
+
 	
 
 	public static void main(String[] args) {
@@ -122,18 +126,18 @@ public class PersonsRandomTestAppl {
 	}
 
 	private static String getRandomCity() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return "city" + getRandomNumber(1, N_CITIES);
 	}
 
 	private static String getRandomPersonName() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return "name" + getRandomNumber(1, N_NAMES);
 	}
 
 	private static String getRandomPhone() {
-		// TODO Auto-generated method stub
-		return null;
+		String[] prefixes = {"050", "051", "052", "053", "054", "055", "056", "057", "058"};
+		return String.format("%s-%d",prefixes[getRandomNumber(0, prefixes.length-1)], getRandomNumber(1000000, 9999999));
 	}
 
 	private static int getRandomNumber(int min, int max) {
