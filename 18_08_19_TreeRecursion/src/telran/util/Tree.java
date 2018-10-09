@@ -1,5 +1,6 @@
 package telran.util;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.Iterator;
@@ -14,7 +15,7 @@ public class Tree<E> implements Set<E> {
 	Comparator<E> comp;
 	NodeTree<E> root;
 	int size;
-	private int spacePerLevel = 2;
+	private int spacePerLevel = 5;
 	
 	
 	public void setSpacePerLevel(int spacePerLevel) {
@@ -61,6 +62,31 @@ public class Tree<E> implements Set<E> {
 		}
 		
 		return parent;
+	}
+	public boolean add2(E e) {
+		if (contains(e)) {
+			return false;
+		}
+		NodeTree<E> parent = null;
+		NodeTree<E> newNode = new NodeTree<>(e);
+		if(root == null) {
+			root = newNode;
+		}
+		else {
+			parent = getParent(e);
+			if(comp.compare(e, parent.obj)<0) {
+				parent.left = newNode;
+			} else {
+				parent.right = newNode;
+			}
+		}
+		newNode.parent = parent;
+		int a = this.height();
+		if ( a > (Math.log(size) /Math.log(2)) * 1.2) {
+			this.balance();
+		}
+		size++;
+		return true;
 	}
 
 	@Override
@@ -285,5 +311,39 @@ public class Tree<E> implements Set<E> {
 		return widthRecursen(root.left) > widthRecursen(root.right)? widthRecursen(root.left):
 			widthRecursen(root.right);
 	}
+	
+	public int balance() {
+		ArrayList arr = new ArrayList<>();
+		
+		Iterator<E> iter = this.iterator();
+		while(iter.hasNext()) {
+			arr.add(iter.next());
+		}
+//		System.out.println(arr.toString());
+		int left = 0;
+		int right= arr.size()- 1;
+		this.root = null;
+		size = 0;
+		
+		recreatedTree(left, right, arr);
+//		printRotated();
+		
+		
+		return arr.size();
+	}
+
+	private void recreatedTree(int left, int right, ArrayList arr) {
+		
+		if(left <= right) {
+			int mid = (left + right) / 2;
+			this.add((E) arr.get(mid));
+			recreatedTree(mid + 1, right, arr);
+			recreatedTree(left, mid - 1, arr);
+			
+					
+		} 
+		
+	}
+	
 
 }

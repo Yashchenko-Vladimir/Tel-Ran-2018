@@ -58,12 +58,12 @@ class SetTest {
 	void testSiseRecursion() {
 		assertEquals(expOriginal.length, set.getSizeRecursion());
 	}
-	@Test
-	void printRotated() {
-		set.setSpacePerLevel(5);
-		set.printRotated();
-	}
-	
+//	@Test
+//	void printRotated() {
+//		set.setSpacePerLevel(5);
+//		set.printRotated();
+//	}
+//	
 	@Test
 	void width() {
 		assertEquals(4, set.width());
@@ -73,6 +73,21 @@ class SetTest {
 	@Test
 	void height() {
 		assertEquals(5, set.height());
+		
+	}
+	@Test
+	void addBalance() {
+		set.printRotated();
+		set.add(15);
+		set.add(10);
+		System.out.println("--------------");
+		set.printRotated();
+		System.out.println("--------------");
+		set.add2(5);
+		set.printRotated();
+		
+		
+		
 		
 	}
 
