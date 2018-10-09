@@ -15,29 +15,29 @@ public class PersonsRandomTestAppl {
 	private static final int INTERVAL = 1000;
 	private static final int N_PERSONS = 100;
 
-	private static final int EMPLOYEE_PROBABILITY = 0;
+	private static final int EMPLOYEE_PROBABILITY = 70;
 
-	private static final int MIN_CHILD_YEAR = 0;
+	private static final int MIN_CHILD_YEAR = 2013;
 
-	private static final int MAX_CHILD_YEAR = 0;
+	private static final int MAX_CHILD_YEAR = 2018;
 
-	private static final int MIN_EMPLOYEE_YEAR = 0;
+	private static final int MIN_EMPLOYEE_YEAR = 1959;
 
-	private static final int MAX_EMPLOYEE_YEAR = 0;
+	private static final int MAX_EMPLOYEE_YEAR = 2000;
 
-	private static final int N_GARTENS = 0;
+	private static final int N_GARTENS = 5;
 
-	private static final int MIN_SALARY = 0;
+	private static final int MIN_SALARY = 5000;
 
-	private static final int MAX_SALARY = 0;
+	private static final int MAX_SALARY = 30000;
 
-	private static final int N_COMPANIES = 0;
+	private static final int N_COMPANIES = 3;
 
-	private static final int N_STREETS = 0;
+	private static final int N_STREETS = 2;
 
-	private static final int N_CITIES = 0;
+	private static final int N_CITIES = 3;
 
-	private static final int N_NAMES = 0;
+	private static final int N_NAMES = 20;
 
 	
 
@@ -83,7 +83,7 @@ public class PersonsRandomTestAppl {
 	}
 
 	private static LocalDate getRandomDate(int minYear, int maxYear) {
-		int year = getRandomNumber(minYear, minYear);
+		int year = getRandomNumber(minYear, maxYear);
 		int month = getRandomNumber(1, 12);
 		int dayOfMonth = getRandomNumber(1, 28);;
 		return LocalDate.of(year, month, dayOfMonth);

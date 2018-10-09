@@ -22,7 +22,7 @@ public class Employee extends Person {
 	@Override
 	public String toString() {
 		return "Employee [company=" + company + ", salary=" + salary + ", address=" + getAddress() + ", id="
-				+ getId() + ", phone=" + getPhone() + ", name()=" + getName() + ", birthDate=" +getBirthDate() + "]";
+				+ getId() + ", phone=" + getPhone() + ", name()=" + getName() + ", birthDate=" +getBirthDate() + "]\n";
 	}
 
 	public String getCompany() {

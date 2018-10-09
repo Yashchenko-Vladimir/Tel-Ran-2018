@@ -27,7 +27,7 @@ public class Child extends Person{
 	@Override
 	public String toString() {
 		return "Child [kindergarten=" + kindergarten + ", address=" + getAddress() + ", id=" + getId()
-				+ ", phone=" + getPhone() + ", name=" + getName() + ", birthDate=" +getBirthDate() +"]";
+				+ ", phone=" + getPhone() + ", name=" + getName() + ", birthDate=" +getBirthDate() +"]\n";
 	}
 	
 }
