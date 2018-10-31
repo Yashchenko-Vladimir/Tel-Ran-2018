@@ -1,5 +1,11 @@
 package telran.persons.service;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -12,8 +18,9 @@ import telran.persons.Employee;
 import telran.persons.Person;
 import telran.util.Address;
 
-public class PersonsMap implements IPersons {
-	private Map<Integer, Person> persons = new HashMap<>();
+public class PersonsMap implements IPersons, Persistable {
+	private  Map<Integer, Person> persons = new HashMap<>();
+	
 
 	@Override
 	public boolean addPerson(Person person) {
@@ -111,6 +118,37 @@ public class PersonsMap implements IPersons {
 								.forEach(x-> System.out.println("Salary range " + x.getKey()
 								*interval + " - " + (x.getKey()*interval + (interval-1)) +"\n" + x.getValue() +"\n"));
 
+	}
+
+	@Override
+	public void save(String fileName) {
+		try {
+			ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream(fileName));
+			output.writeObject(this);
+			System.out.println(this.getClass());
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		// если она явяляется persistobal то сохранить
+		// TODO Auto-generated method stub
+		
+		
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static IPersons restore(String fileName) throws IOException, IOException, ClassNotFoundException {
+		ObjectInputStream input = new ObjectInputStream(new FileInputStream(fileName));
+		PersonsMap personss = new PersonsMap();
+//		System.out.println(input.readObject().getClass());
+		personss =  (PersonsMap) input.readObject();
+		
+		input.close();
+		
+		return personss ;
 	}
 
 

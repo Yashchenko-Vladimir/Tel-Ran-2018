@@ -1,10 +1,11 @@
 package telran.persons;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 import telran.util.Address;
 
-public class Person implements Comparable<Person>{
+public class Person implements Comparable<Person>, Serializable{
 	private int id;
 	private String phone;
 	private String name;
