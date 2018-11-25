@@ -32,12 +32,18 @@ public class RentCompanyWebProxy implements IRentCompany {
 	private RestTemplate restTemplate = new RestTemplate();
 
 	public RentCompanyWebProxy(String hostname, int port) {
+		
 		this.hostname = hostname;
 		this.port = port;
 	}
 	
 	private String makeUrl(String ... str) {
-		String url = "http://localhost:8080" + str[0];
+		String url = null;
+		if(port == 0) {
+			url = "https://" + hostname  + str[0];
+		} else {
+			url = "http://" + hostname + ":" + port + str[0];
+		}
 		for(int i = 1; i < str.length; i++) {
 			url +="/" + str[i];
 		}
