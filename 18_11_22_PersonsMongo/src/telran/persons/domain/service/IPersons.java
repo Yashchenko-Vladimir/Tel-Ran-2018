@@ -13,6 +13,6 @@ public interface IPersons {
 	List<Person> getPersonsCity(String city);
 	List<Person> getEmployeesSalaryGreat(int salary);
 	List<Person> getEmployeesSalaryRange(int fromSalary, int toSalary);
-	List<Child> getChildrenGarten(String garten);
+	List<Person> getChildrenGarten(String garten);
 	boolean updateAddress(int id, Address address);
 }

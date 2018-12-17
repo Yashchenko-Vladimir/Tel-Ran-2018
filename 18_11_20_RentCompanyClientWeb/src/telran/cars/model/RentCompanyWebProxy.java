@@ -1,6 +1,7 @@
 package telran.cars.model;
 
 import java.time.LocalDate;
+import java.util.Base64;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -22,14 +23,16 @@ import telran.cars.dto.Driver;
 import telran.cars.dto.Model;
 import telran.cars.dto.RecordsByDates;
 import telran.cars.dto.RentRecord;
+import telran.utils.ILogin;
 import telran.utils.Persistable;
 
 import static telran.cars.dto.RentCompanyConstants.*;
 
-public class RentCompanyWebProxy implements IRentCompany {
+public class RentCompanyWebProxy implements IRentCompany, ILogin {
 	private String hostname;
 	private int port;
 	private RestTemplate restTemplate = new RestTemplate();
+	private HttpHeaders headers=new HttpHeaders();
 
 	public RentCompanyWebProxy(String hostname, int port) {
 		
@@ -59,13 +62,13 @@ public class RentCompanyWebProxy implements IRentCompany {
 	}
 
 	private <T, E> T sendPOST(String url, HttpMethod httMethod, E body, ParameterizedTypeReference<T> typeT) {
-		HttpEntity<E> requestEntity = new HttpEntity<E>(body);
+		HttpEntity<E> requestEntity = new HttpEntity<E>(body, headers);
 		ResponseEntity<T> response  = restTemplate.exchange(url, httMethod, requestEntity, typeT);
 		return  response.getBody();
 	}
 
 	private <T> T sendGETandDELETE(String url, HttpMethod httMethod, ParameterizedTypeReference<T> typeT) {
-		ResponseEntity<T> response = restTemplate.exchange(url,  httMethod, null, typeT);
+		ResponseEntity<T> response = restTemplate.exchange(url,  httMethod, new HttpEntity<>(headers), typeT);
 		return  response.getBody();
 	}
 
@@ -218,6 +221,15 @@ public class RentCompanyWebProxy implements IRentCompany {
 		String url = makeUrl(GET_RETURNED_RECORDS_BY_DATES);
 		RecordsByDates records = new RecordsByDates(from, to);
 		return sendRequest(url, HttpMethod.POST, records, new ParameterizedTypeReference<List<RentRecord>>() {}).stream();
+	}
+
+	@Override
+	public boolean login(String username, String password) {
+		String userPassword = username + ":" + password;//"moshe:54321^Com";
+		headers = new HttpHeaders();
+        headers.add("Authorization","Basic "+Base64.getEncoder().encodeToString
+        		(userPassword.getBytes()));
+		return true;
 	}
 
 

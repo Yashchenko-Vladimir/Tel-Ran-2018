@@ -57,8 +57,7 @@ public class PersonsMongo implements IPersons{
 	}
 
 	@Override
-	public List<Child> getChildrenGarten(String garten) {
-		System.out.println(garten);
+	public List<Person> getChildrenGarten(String garten) {
 		return personsRepository.findByKindergarten(garten);
 	}
 

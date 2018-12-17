@@ -5,7 +5,8 @@ import java.util.*;
 import java.util.stream.Stream;
 
 import telran.cars.dto.*;
-public interface IRentCompany {
+import telran.utils.ILogin;
+public interface IRentCompany extends ILogin{
 	CarsReturnCode addModel(Model model);//(OK,MODEL_EXISTS)
 	CarsReturnCode addCar(Car car);//(OK,CAR_EXISTS,NO_MODEL)
 	CarsReturnCode addDriver(Driver driver);//(OK,DRIVER_EXISTS)

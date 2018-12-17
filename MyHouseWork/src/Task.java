@@ -1,10 +1,18 @@
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class Task {
 	
 	public static void main(String[] args) {
-		System.out.println(Integer.toString(15, 16));
-//		Integer.toString(arg0, arg1)
+	Queue<Integer> qu = new LinkedList<Integer>();
+	qu.offer(1);
+	System.out.println(qu);
+	qu.offer(2);
+	System.out.println(qu);
+	qu.remove();
+	System.out.println(qu);
+		
 	}
 	
 }

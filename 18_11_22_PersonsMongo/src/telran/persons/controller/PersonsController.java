@@ -50,7 +50,7 @@ public class PersonsController {
 	}
 	
 	@GetMapping("/children/{garten}")
-	List<Child> getChildrenGarten(@PathVariable("garten") String garten){
+	List<Person> getChildrenGarten(@PathVariable("garten") String garten){
 		return persons.getChildrenGarten(garten);
 	}
 }

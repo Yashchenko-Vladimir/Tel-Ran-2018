@@ -26,7 +26,7 @@ import telran.cars.model.*;
 import telran.view.*;
 
 public class RentCompanyClientAppl {
-private static final String DEFAULT_HOST_NAME = "localhost";
+private static final String DEFAULT_HOST_NAME = "localhost"; //rentcompany2018.herokuapp.com 0
 private static final int DEFAULT_PORT = 8080;
 static IRentCompany company;
 static String fileName;
@@ -53,7 +53,8 @@ static InputOutput io=new ConsoleInputOutput();
 				new Submenu
 				("Technician"
 						,getTechnicionMenu()),
-				new ModelItem(io, company)
+				new ModelItem(io, company),
+				new LoginItem(io, company)
 		};
 		return res;
 	}

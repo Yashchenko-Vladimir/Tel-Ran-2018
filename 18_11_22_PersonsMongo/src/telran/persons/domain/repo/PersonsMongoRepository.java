@@ -22,8 +22,12 @@ public interface PersonsMongoRepository extends MongoRepository<Person, Integer>
 	
 	@Query("{'salary':{'$gte':?0, '$lte':?1}}")
 	List<Person> findBySalary( int from, int to);
-	
-	List<Child> findByKindergarten(String garten);
+//	@Query("{'kindergarten':{'$regex':'garten1'}}")
+//	@Query("{'kindergarten':garten}")
+//	List<Child> findByKindergarten(String garten);
+//	@Query ("{'kindergarten':{'$ne':null}}")
+	@Query("{'kindergarten' : ?0 }")
+	List<Person> findByKindergarten(String garten);
 	
 
 }
