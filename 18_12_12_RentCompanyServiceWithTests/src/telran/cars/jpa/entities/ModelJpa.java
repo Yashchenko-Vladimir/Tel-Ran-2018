@@ -7,6 +7,7 @@ import javax.persistence.*;
 public class ModelJpa {
 	
 	@Id
+	@Column(name ="modelname")
 	String modelName;
 	int gasTank;
 	String company;

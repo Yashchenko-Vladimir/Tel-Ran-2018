@@ -22,8 +22,6 @@ import telran.cars.jpa.entities.CarJpa;
 import telran.cars.jpa.repo.CarRepository;
 @SpringBootApplication
 class RentCompanyCrudTests {
-	@Autowired
-	private CarRepository carRepository;
 
 	private static final String REG_NUMBER1 = "123";
 	private static final String COLOR1 = "green";

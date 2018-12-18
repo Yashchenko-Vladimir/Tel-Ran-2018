@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import org.hibernate.annotations.Subselect;
 
 @Entity
-@Subselect("select model_name, year(purchase_date) as year, "
+@Subselect("select modelname, year(purchasedate) as year, "
 		+ "year(curdate())-birthyear as age from cars join owners on ownerid=id")
 public class PopularModels {
 	String modelname;

@@ -10,9 +10,10 @@ public class CarJpa {
 	@Id
 	String reg_number;
 	String color;
+	@Column(name = "purchasedate")
 	LocalDate purchase_date;
 	@ManyToOne
-	@JoinColumn(name = "model_name")
+	@JoinColumn(name = "modelname")
 	CarModel carModel;
 	@ManyToOne
 	@JoinColumn(name="ownerid")

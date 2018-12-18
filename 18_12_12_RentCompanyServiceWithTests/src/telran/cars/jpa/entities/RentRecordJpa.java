@@ -11,10 +11,10 @@ public class RentRecordJpa {
 	@GeneratedValue
 	int id;
 	@ManyToOne
-	@JoinColumn(name = "driver_id")
+	@JoinColumn(name = "car_id")
 	CarJpa car;
 	@ManyToOne
-	@JoinColumn(name = "car_id")
+	@JoinColumn(name = "driver_id")
 	DriverJpa driver;
 	@Column(name = "rent_date")
 	LocalDate rentDate;

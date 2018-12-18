@@ -240,7 +240,8 @@ public class RentCompanyJpa extends AbstractRentCompany {
 
 	@Override
 	public List<String> getMostPopularModelNames() {
-		// TODO Auto-generated method stub
+//		long max = recordRepository.getMaxFromPopuparModelName();
+//		return recordRepository.selectMostpopularModelNames(max);
 		return null;
 	}
 

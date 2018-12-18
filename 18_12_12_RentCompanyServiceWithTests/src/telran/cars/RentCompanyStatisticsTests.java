@@ -11,7 +11,9 @@ import telran.cars.model.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+@SpringBootApplication
 class RentCompanyStatisticsTests {
 
     IRentCompany rentCompany;

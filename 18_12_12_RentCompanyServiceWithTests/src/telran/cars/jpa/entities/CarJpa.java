@@ -11,6 +11,7 @@ import telran.cars.dto.State;
 public class CarJpa {
 	
 	@Id
+	@Column(name = "carnumber")
 	String carNumber;
 	@ManyToOne
 	@JoinColumn (name = "car_model_name", nullable = false)
